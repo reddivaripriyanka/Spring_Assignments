@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- The below tag is for Annotation - Comment Bean tags to use Annotation -->
+	<!-- <context:component-scan base-package="com.capgemini.app"/> -->
+	<util:list id="list">
+		<value>priyanka</value>
+		<value>hema</value>
+		<value>jahnavi</value>
+	</util:list>
+
+	<util:map id="map">
+		<entry key="priyanka" value="chittoor"></entry>
+		<entry key="hema" value="nellore"></entry>
+		<entry key="jahnavi" value="guntur"></entry>
+	</util:map>
+
+
+	<util:set id="set">
+		<value>"banglore"</value>
+		<value>"hyderabad"</value>
+		<value>"chennai"</value>
+	</util:set>
+	<bean id="organization"
+		class="com.capgemini.app.bean.Organization">
+		<property name="boardMembers" ref="list" />
+		<property name="branchManagers" ref="map"></property>
+		<property name="cities" ref="set"></property>
+		<property name="dateOfEstablishment">
+			<bean class="java.time.LocalDate" factory-method="parse">
+				<constructor-arg value="1997-02-04"></constructor-arg>
+			</bean>
+		</property>
+		<property name="ipAddresses">
+			<util:properties location="classpath:ip.properties"></util:properties>
+		</property>
+		 <property name="listed" value="true"></property>
+		<property name="name" value="priyanka"></property>
+		<property name="orgId" value="22"></property>
+		<property name="shareValue" value="33.4"></property> 
+	</bean>
+
+	 <!-- <bean id="organization2" class="com.capgemini.app.bean.Organization"> 
+		<constructor-arg value=""/> <constructor-arg ref=""/> </bean> -->
+
+</beans>
+
+
+
+
+
